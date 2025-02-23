@@ -33,3 +33,20 @@ python app.py
 ```sh
 http://127.0.0.1:5000
 ```
+
+## Sample JSON
+```json
+{
+  "Age": 0.0,
+  "Gender": 0.0,
+  "Total_Bilirubin": 0.0,
+  "Direct_Bilirubin": 0.0,
+  "Alkaline_Phosphotase": 0.0,
+  "Alamine_Aminotransferase": 0.0,
+  "Aspartate_Aminotransferase": 0.0,
+  "Total_Protiens": 0.0,
+  "Albumin": 0.0,
+  "Albumin_and_Globulin_Ratio": 0.0
+}
+
+```
