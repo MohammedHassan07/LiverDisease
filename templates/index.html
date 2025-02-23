@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liver Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Liver Disease Prediction</h1>
+
+    <form id="prediction-form">
+        <div class="form-group">
+            <label for="Age">Age:</label>
+            <input type="number" step="any" id="Age" name="Age" required>
+        </div>
+        <div class="form-group">
+            <label for="Gender">Gender (1: Male, 0: Female):</label>
+            <input type="number" step="any" id="Gender" name="Gender" required>
+        </div>
+        <div class="form-group">
+            <label for="Total_Bilirubin">Total Bilirubin:</label>
+            <input type="number" step="any" id="Total_Bilirubin" name="Total_Bilirubin" required>
+        </div>
+        <div class="form-group">
+            <label for="Direct_Bilirubin">Direct Bilirubin:</label>
+            <input type="number" step="any" id="Direct_Bilirubin" name="Direct_Bilirubin" required>
+        </div>
+        <div class="form-group">
+            <label for="Alkaline_Phosphotase">Alkaline Phosphotase:</label>
+            <input type="number" step="any" id="Alkaline_Phosphotase" name="Alkaline_Phosphotase" required>
+        </div>
+        <div class="form-group">
+            <label for="Alamine_Aminotransferase">Alamine Aminotransferase:</label>
+            <input type="number" step="any" id="Alamine_Aminotransferase" name="Alamine_Aminotransferase" required>
+        </div>
+        <div class="form-group">
+            <label for="Aspartate_Aminotransferase">Aspartate Aminotransferase:</label>
+            <input type="number" step="any" id="Aspartate_Aminotransferase" name="Aspartate_Aminotransferase" required>
+        </div>
+        <div class="form-group">
+            <label for="Total_Protiens">Total Proteins:</label>
+            <input type="number" step="any" id="Total_Protiens" name="Total_Protiens" required>
+        </div>
+        <div class="form-group">
+            <label for="Albumin">Albumin:</label>
+            <input type="number" step="any" id="Albumin" name="Albumin" required>
+        </div>
+        <div class="form-group">
+            <label for="Albumin_and_Globulin_Ratio">Albumin and Globulin Ratio:</label>
+            <input type="number" step="any" id="Albumin_and_Globulin_Ratio" name="Albumin_and_Globulin_Ratio" required>
+        </div>
+        <button type="submit">Predict Disease</button>
+    </form>
+</div>
+
+<!-- Dialog Box for Result -->
+<div id="dialog-overlay" class="dialog-overlay"></div>
+<div id="dialog" class="dialog">
+    <div class="dialog-content">
+        <img id="img" src="{{ url_for('static', filename='images/happy.png') }}" alt="Result Image">
+        <p id="prediction-result"></p>
+        <button id="close-btn">OK</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>
