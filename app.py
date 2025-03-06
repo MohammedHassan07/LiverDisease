@@ -1,12 +1,12 @@
-# app.py
 from flask import Flask, request, render_template, jsonify
 import joblib
 import numpy as np
+from tensorflow import keras
 
 app = Flask(__name__)
 
-# Load the trained model
 model = joblib.load('rf_classifier.pkl')
+model2 = keras.models.load_model('liver_disease_l1l2_model.h5')
 
 @app.route('/')
 def home():
@@ -18,8 +18,8 @@ def predict():
 
         data = request.get_json()
         # Get data from the form (blood content values)
-        Age = float(data['Age'])
-        Gender = float(data['Gender'])
+        # Age = float(data['Age'])
+        # Gender = float(data['Gender'])
         Total_Bilirubin = float(data['Total_Bilirubin'])
         Direct_Bilirubin = float(data['Direct_Bilirubin'])
         Alkaline_Phosphotase = float(data['Alkaline_Phosphotase'])
@@ -49,9 +49,26 @@ def predict():
     except Exception as e:
         return jsonify({'prediction': f"Error: {str(e)}"})
  
-# Required for Vercel
-def handler(environ, start_response):
-    return app(environ, start_response)
+@app.route('/predict2', methods=['POST'])
+def predict2():
+    data = request.get_json() 
+    print(data)
+
+    features = [
+        float(data['Total_Bilirubin']), float(data['Direct_Bilirubin']),
+        float(data['Alkaline_Phosphotase']),
+        float(data['Alamine_Aminotransferase']),
+        float(data['Aspartate_Aminotransferase']),
+        float(data['Total_Protiens']),
+        float(data['Albumin']),
+        float(data['Albumin_and_Globulin_Ratio'])
+    ]
+
+    input_data = np.array(features).reshape(1, -1)  
+    
+    prediction = model2.predict(input_data)[0][0] 
+    
+    return jsonify({'prediction': prediction}) 
 
 if __name__ == "__main__":
     app.run(debug=True)
