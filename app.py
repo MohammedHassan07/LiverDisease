@@ -35,6 +35,10 @@ def predict():
                                 Albumin, Albumin_and_Globulin_Ratio]])
 
         # Predict the disease (1: Disease, 0: No Disease)
+
+        probabilities = model.predict_proba(input_data)[0]
+        confidence = max(probabilities) * 100  
+
         prediction = model.predict(input_data)[0]
 
         if prediction == 1:
@@ -43,8 +47,8 @@ def predict():
         else:
             result = "No Disease Detected"
             
-        print('result -->', result)
-        return jsonify({'prediction': result})
+        print(f'Result: {result}, Confidence: {confidence:.2f}%, prediction: {prediction}')
+        return jsonify({'prediction': result, 'confidence': float(confidence), 'probability': float(prediction)})
 
     except Exception as e:
         return jsonify({'prediction': f"Error: {str(e)}"})
@@ -67,8 +71,18 @@ def predict2():
     input_data = np.array(features).reshape(1, -1)  
     
     prediction = model2.predict(input_data)[0][0] 
+    confidenceScore = prediction * 100
     
-    return jsonify({'prediction': prediction}) 
+    if prediction >= 0.5:
+        result = "Disease Detected"
+         
+    else:
+        result = "No Disease Detected"
+            
+    print(f"Confidence: {confidenceScore:.2f}%, Status: {result}, prediction: {prediction}")   
+
+    return jsonify({'prediction': result, 'confidence': float(confidenceScore), 'probability': float(prediction)})
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

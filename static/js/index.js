@@ -4,7 +4,7 @@ document.getElementById("prediction-form").addEventListener("submit", function(e
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
 
-    fetch("/predict", {
+    fetch("/predict2", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -12,7 +12,7 @@ document.getElementById("prediction-form").addEventListener("submit", function(e
     .then(response => response.json())
     .then(result => {
         console.log(result)
-        document.getElementById("prediction-result").textContent = result.prediction;
+        document.getElementById("prediction-result").textContent = `${result.prediction} with confidence of ${result.confidence} %`;
         
         // Set image based on prediction
         if (result.prediction === "Disease Detected") {

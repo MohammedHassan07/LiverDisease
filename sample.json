@@ -1,0 +1,39 @@
+[
+    {
+      "Age": 55,
+      "Gender": 1,
+      "Total_Bilirubin": 7.5,
+      "Direct_Bilirubin": 3.8,
+      "Alkaline_Phosphotase": 300,
+      "Alamine_Aminotransferase": 180,
+      "Aspartate_Aminotransferase": 200,
+      "Total_Protiens": 5.0,
+      "Albumin": 2.5,
+      "Albumin_and_Globulin_Ratio": 0.8
+    },
+    {
+      "Age": 30,
+      "Gender": 0,
+      "Total_Bilirubin": 0.8,
+      "Direct_Bilirubin": 0.2,
+      "Alkaline_Phosphotase": 90,
+      "Alamine_Aminotransferase": 30,
+      "Aspartate_Aminotransferase": 32,
+      "Total_Protiens": 7.0,
+      "Albumin": 4.5,
+      "Albumin_and_Globulin_Ratio": 1.2
+    },
+    {
+      "Age": 45,
+      "Gender": 1,
+      "Total_Bilirubin": 2.0,
+      "Direct_Bilirubin": 1.0,
+      "Alkaline_Phosphotase": 120,
+      "Alamine_Aminotransferase": 60,
+      "Aspartate_Aminotransferase": 70,
+      "Total_Protiens": 6.0,
+      "Albumin": 3.2,
+      "Albumin_and_Globulin_Ratio": 1.0
+    }
+  ]
+  
